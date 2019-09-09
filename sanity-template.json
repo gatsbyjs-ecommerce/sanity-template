@@ -1,0 +1,77 @@
+{
+  "version": 0,
+  "title": "Ecommerce with Gatsby",
+  "description": "Clean React.js starting point for portfolios, project listings or case studies.",
+  "previewMedia": {
+    "type": "image",
+    "src": "assets/frontend.jpg",
+    "alt": "A preview image of the Gatsby ecommerce website."
+  },
+  "technologies": [
+    {
+      "id": "gatsby",
+      "name": "Gatsby",
+      "url": "https://www.gatsbyjs.org/"
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "url": "https://www.netlify.com/"
+    }
+  ],
+  "deployments": [
+    {
+      "id": "studio",
+      "type": "studio",
+      "title": "Sanity Studio",
+      "description": "The Sanity Studio is where you edit and structure your content.",
+      "dir": "./studio",
+      "provider": {
+        "name": "netlify",
+        "config": {
+          "base": "studio",
+          "cmd": "npm run build && cp ./netlify.toml dist",
+          "dir": "studio/dist"
+        },
+        "requirements": ["build-hook"]
+      },
+      "previewMedia": {
+        "type": "image",
+        "src": "assets/studio.jpg",
+        "alt": "A preview image of the Sanity Studio."
+      }
+    },
+    {
+      "id": "web",
+      "type": "web",
+      "title": "Ecommerce Website",
+      "description": "A blazing fast ecommerce, made for being easy to customize and update.",
+      "dir": "./web",
+      "requiredTokens": [
+        {
+          "role": "deploy-studio",
+          "label": "GraphQL API Deployer"
+        }
+      ],
+      "provider": {
+        "name": "netlify",
+        "config": {
+          "cmd": "npm run build-web",
+          "dir": "web/public"
+        },
+        "requirements": ["build-hook"]
+      },
+      "previewMedia": {
+        "type": "image",
+        "src": "assets/frontend.jpg",
+        "alt": "A preview image of the portfolio website."
+      },
+      "requiredCorsOrigins": [
+        {
+          "origin": "http://localhost:8000",
+          "allowCredentials": false
+        }
+      ]
+    }
+  ]
+}
